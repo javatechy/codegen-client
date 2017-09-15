@@ -12,14 +12,14 @@
       (ngSubmit)="submitLoginForm(loginForm)">
 
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="User Name"  formControlName="userName" maxlength={{len}} size="20" >
+      <input mdInput placeholder="User Name"  formControlName="userName" mdTooltip="Create your user using scripts given in fab-backend project!" maxlength={{len}} size="20" >
     </md-form-field>
   <div  style="color: chocolate;" *ngIf="!loginForm.controls['userName'].valid && loginForm.controls['userName'].touched">Please enter username</div>
 
 <br>
 
   <md-form-field class="example-full-width">
-      <input mdInput placeholder="Password"  formControlName="password" maxlength={{len}} size="20" >
+      <input mdInput placeholder="Password"  formControlName="password" mdTooltip="Only Mandatory field validation is added" type="password" maxlength={{len}} size="20" >
     </md-form-field>
   <div  style="color: chocolate;" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Please enter password</div>
 <br>
