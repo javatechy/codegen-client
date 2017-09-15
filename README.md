@@ -1,6 +1,10 @@
 # FabUi
 
-UI of the test
+UI of the wallet system
+Please execute database script mentioned in Readme.md of the project:
+
+https://github.com/javatechy/fab-backend
+
 
 ## Development server
 
