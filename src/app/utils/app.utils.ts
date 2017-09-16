@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 // Headers HTTP
 export const HEADER_X_DIGEST = 'X-Digest';
 export const HEADER_X_ONCE = 'X-Once';
@@ -37,14 +37,20 @@ export const BACKEND_API_AUTHENTICATE_PATH = '/authenticate';
 export const BACKEND_BASE_URL = environment.apiUrl;
 
 // export const BACKEND_BASE_URL='http://localhost:7070';
-export const BACKEND_API_VCID: string = BACKEND_BASE_URL + '/api/open';
 export const BACKEND_API_AUTH: string = BACKEND_BASE_URL + '/fab/authenticate';
-export const BACKEND_API_ONBD: string = BACKEND_BASE_URL + '/api/register';
+export const BACKEND_API_USERS: string = BACKEND_BASE_URL + '/fab/users';
+export const BACKEND_API_TRANSACTIONS: string = BACKEND_BASE_URL + '/fab/transactions';
 export const BACKEND_API_RKTN: string = BACKEND_BASE_URL + '/api/open';
-export const BACKEND_API_REFRESH_TOKEN: string = BACKEND_BASE_URL + '/api/refresh';
 // statues
 export const BE_STATUS_SUCCESS = '200';
 export const BE_STATUS_FAILURE = '500';
+export const LS_LOGGED_IN_STATUS = 'LS_LOGGED_IN_STATUS';
+export const LS_USER_ROLE = 'LS_USER_ROLE';
+export const ROLE_ADMIN = 'ADMIN';
+export const ROLE_NON_ADMIN = 'NON_ADMIN';
+export const LS_USER_ID = 'USER_ID';
+
+
 export const BE_STATUS_BLOCKED_USER = 'Z001';
 
 export const OPCODE_ONBD = 'ONBD';
@@ -61,16 +67,17 @@ export const SS_USER_STATUS = 'LS_USER_STATUS';
 export const SS_LOGIN_MSISDN = 'LS_LOGIN_MSISDN';
 export const SS_LOGGED_IN_USER = 'LS_LOGGED_IN_USER';
 export const SS_IS_SIGNED_UP = 'LS_IS_SIGNED_UP';
+
 // export const SS_DIRECT_SIGN_IN = "SS_DIRECT_SIGN_IN";
 
-export class
-UrlMatcher {
+export class UrlMatcher {
   public static matches(url: string): boolean {
     // return true;.
     return url.indexOf(BACKEND_API_PATH) !== -1
       && url.indexOf(BACKEND_API_PATH + BACKEND_API_AUTHENTICATE_PATH) === -1;
   }
 }
+
 // Mixpanel Project Token
 export const MIXPANEL_TOKEN = '60e3c79cec40f179f650312f1ce03823';
 

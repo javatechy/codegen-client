@@ -41,12 +41,20 @@ export class LoginComponent implements OnInit {
   submitLoginForm(post) {
     // alert(JSON.stringify(post));
     this.loginService.authenticate(post.userName, post.password).subscribe(customResponse => {
-      alert(JSON.stringify(customResponse));
-      if (customResponse.status === '200') {
-        
+      if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
+        this.helperService.openSnackBar('Login Successfull');
+        Common.setStorage(AppUtils.LS_LOGGED_IN_STATUS, customResponse.status);
+        Common.setStorage(AppUtils.LS_USER_ROLE, customResponse.user.role);
+        Common.setStorage(AppUtils.LS_USER_ID, customResponse.user.userId);
+        if (customResponse.user.role === AppUtils.ROLE_ADMIN) {
+          this.router.navigate(['/admin']);
+        }else {
+          this.router.navigate(['/user']);
+        }
+      } else {
+        this.helperService.openSnackBar('Login Failed with Error message : ' + customResponse.error.message);
       }
     });
-    // this.router.navigate(['/user']);
   }
 
 }

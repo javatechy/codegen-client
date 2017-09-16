@@ -10,33 +10,35 @@ import {CustomResponse, Error} from '../model/CustomResponse';
 import {Location} from '@angular/common';
 import {Observer} from 'rxjs/Observer';
 
-import { RequestOptions, RequestMethod} from '@angular/http';
+import {RequestOptions, RequestMethod} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {isNullOrUndefined} from 'util';
+import {MdSnackBar} from "@angular/material";
+
 @Injectable()
 export class HelperService {
 
   response: CustomResponse;
 
   constructor(private http: Http,
-              private router: Router, private location: Location, private jsonp: Jsonp) {
+              private router: Router, private location: Location, private jsonp: Jsonp, public snackBar: MdSnackBar) {
   }
 
 
   post(url: string, customRequest: CustomRequest): Observable<CustomResponse> {
     AppLogger.log('Custom Request=======> ', customRequest);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Allow-Cross-Origin', '*');
     const bodySend = JSON.parse(JSON.stringify(customRequest));
-    return this.http.post( url, bodySend, headers).map(res => res.json());
+    return this.http.post(url, bodySend, headers).map(res => res.json());
   }
 
   get(url: string): Observable<CustomResponse> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Allow-Cross-Origin', '*');
-    return this.http.get( url, headers).map(res => res.json());
+    return this.http.get(url, headers).map(res => res.json());
   }
 
   goBack() {
@@ -46,6 +48,7 @@ export class HelperService {
   goHome() {
     this.router.navigate(['/user']);
   }
+
   goLogin() {
     this.router.navigate(['/login']);
   }
@@ -77,7 +80,7 @@ export class HelperService {
   }
 
   httpPost(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-   // this.addSecurityHeader(url, 'POST', options);
+    // this.addSecurityHeader(url, 'POST', options);
     AppLogger.log('[ HTTP CLIENT]Inside  POST HEADER', options);
     AppLogger.log('[ HTTP CLIENT]Options body ', body);
     AppLogger.log('[ HTTP CLIENT]Options url ', url);
@@ -106,4 +109,11 @@ export class HelperService {
     sessionStorage.clear();
     window.location.reload();
   }
+
+  openSnackBar(msg: string) {
+    this.snackBar.open(msg, '', {
+      duration: 3000,
+    });
+  }
+
 }
