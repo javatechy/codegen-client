@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../services/login.service';
 import {HelperService} from '../services/helper.service';
-import {FormService} from '../services/form.service';
 import * as AppUtils from '../utils/app.utils';
 import {Common} from '../utils/Common';
 
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
-              public form: FormBuilder, private helperService: HelperService, private formService: FormService) {
+              public form: FormBuilder, private helperService: HelperService) {
 
     this.loginForm = form.group({
       'userName': [null, Validators.required],
@@ -45,10 +44,11 @@ export class LoginComponent implements OnInit {
         this.helperService.openSnackBar('Login Successfull');
         Common.setStorage(AppUtils.LS_LOGGED_IN_STATUS, customResponse.status);
         Common.setStorage(AppUtils.LS_USER_ROLE, customResponse.user.role);
+        Common.setStorage(AppUtils.LS_USER_NAME, customResponse.user.userName);
         Common.setStorage(AppUtils.LS_USER_ID, customResponse.user.userId);
         if (customResponse.user.role === AppUtils.ROLE_ADMIN) {
           this.router.navigate(['/admin']);
-        }else {
+        } else {
           this.router.navigate(['/user']);
         }
       } else {

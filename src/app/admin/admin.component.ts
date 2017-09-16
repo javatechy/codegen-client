@@ -1,13 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LoginService} from '../services/login.service';
 import {HelperService} from '../services/helper.service';
-import {FormService} from '../services/form.service';
 import * as AppUtils from '../utils/app.utils';
 import {Common} from '../utils/Common';
 import {Transaction, User} from '../model/CustomResponse';
 import 'rxjs/add/observable/of';
+import {FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -19,8 +16,7 @@ export class AdminComponent implements OnInit {
   users: User[];
   transactions: Transaction[];
 
-  constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
-              public form: FormBuilder, private helperService: HelperService, private formService: FormService) {
+  constructor(private helperService: HelperService) {
   }
 
   ngOnInit() {

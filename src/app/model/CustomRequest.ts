@@ -1,7 +1,4 @@
-import { User} from './CustomResponse';
-import { environment } from '../../environments/environment';
-
 export class CustomRequest {
-  constructor(public userName?: string, public password?: string) {
+  constructor(public userName?: string, public password?: string, public amount?: number, public transactionType?: string, public userId?: number) {
   }
 }

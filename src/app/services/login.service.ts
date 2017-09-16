@@ -8,6 +8,7 @@ import {AppLogger} from '../utils/AppLogger';
 import {Common} from '../utils/Common';
 import {CustomResponse} from '../model/CustomResponse';
 import {HelperService} from './helper.service';
+import {isNullOrUndefined} from "util";
 
 @Injectable()
 export class LoginService {
@@ -25,16 +26,12 @@ export class LoginService {
   }
 
   isAuthenticated(): boolean {
-    const userStatus = Common.getStorage(AppUtils.SS_USER_STATUS);
-    const isSignedUp = Common.getStorage(AppUtils.SS_IS_SIGNED_UP);
-
-    if (isSignedUp === 'false') {
+    const userName = Common.getStorage(AppUtils.LS_USER_NAME);
+    if (isNullOrUndefined(userName) ) {
       AppLogger.log('Inside isAuthenticated');
       return false;
-    } else if (isSignedUp === 'true') {
+    } {
       return true;
-    } else {
-      return !!Common.getStorage(AppUtils.STORAGE_ACCOUNT_TOKEN);
     }
   }
 
@@ -53,14 +50,5 @@ export class LoginService {
     return status;
   }
 
-  logoutButton(): void {
-    const cs = Common.create();
-    this.helperService.post(AppUtils.BACKEND_API_RKTN, cs).subscribe();
-    AppLogger.log('Logging out via button');
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.reload();
-    this.router.navigate(['user']);
-  }
 
 }

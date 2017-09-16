@@ -45,7 +45,6 @@ import {UserComponent} from './user/user.component';
 import {HelperService} from './services/helper.service';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {LoginService} from './services/login.service';
-import {FormService} from './services/form.service';
 import {LoginComponent} from './login/login.component';
 
 
@@ -93,7 +92,7 @@ import {LoginComponent} from './login/login.component';
     JsonpModule, BrowserAnimationsModule, BrowserModule
 ],
   bootstrap: [AppComponent],
-  providers: [HelperService, LoginService, FormService,
+  providers: [HelperService, LoginService,
     {provide: LocationStrategy, useClass: PathLocationStrategy}
   ]
 })
