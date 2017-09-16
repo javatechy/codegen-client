@@ -6,7 +6,7 @@ import {HelperService} from '../services/helper.service';
 import {FormService} from '../services/form.service';
 import * as AppUtils from '../utils/app.utils';
 import {Common} from '../utils/Common';
-import {User} from '../model/CustomResponse';
+import {Transaction, User} from '../model/CustomResponse';
 import 'rxjs/add/observable/of';
 
 
@@ -16,8 +16,8 @@ import 'rxjs/add/observable/of';
   providers: [HelperService],
 })
 export class AdminComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
   users: User[];
+  transactions: Transaction[];
 
   constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
               public form: FormBuilder, private helperService: HelperService, private formService: FormService) {
@@ -34,7 +34,25 @@ export class AdminComponent implements OnInit {
           this.helperService.openSnackBar('Error While fetching users list : ' + customResponse.error.message);
         }
       });
+      this.helperService.get(AppUtils.BACKEND_API_TRANSACTIONS).subscribe(customResponse => {
+        if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
+          this.users = customResponse.users;
+          this.helperService.openSnackBar(JSON.stringify(customResponse.users));
+        } else {
+          this.helperService.openSnackBar('Error While fetching users list : ' + customResponse.error.message);
+        }
+      });
     }
+  }
+
+  getBalance(userId: number) {
+    this.helperService.get(AppUtils.BACKEND_API_BALANCE + userId).subscribe(customResponse => {
+      if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
+        this.helperService.openSnackBar('Balance Is :' + customResponse.balance.balance);
+      } else {
+        this.helperService.openSnackBar('Error While fetching balance : ' + customResponse.error.message);
+      }
+    });
   }
 }
 

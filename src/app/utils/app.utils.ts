@@ -39,6 +39,7 @@ export const BACKEND_BASE_URL = environment.apiUrl;
 // export const BACKEND_BASE_URL='http://localhost:7070';
 export const BACKEND_API_AUTH: string = BACKEND_BASE_URL + '/fab/authenticate';
 export const BACKEND_API_USERS: string = BACKEND_BASE_URL + '/fab/users';
+export const BACKEND_API_BALANCE: string = BACKEND_BASE_URL + '/fab/balance/';
 export const BACKEND_API_TRANSACTIONS: string = BACKEND_BASE_URL + '/fab/transactions';
 export const BACKEND_API_RKTN: string = BACKEND_BASE_URL + '/api/open';
 // statues

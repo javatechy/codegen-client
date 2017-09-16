@@ -36,15 +36,36 @@
           <th>Id</th>
           <th>User name</th>
           <th>Password</th>
+          <th>Wallet Balance</th>
         </tr>
         <tr *ngFor="let user of users;">
           <th>{{user.userId}}</th>
           <th>{{user.userName}}</th>
           <th>{{user.password}}</th>
+          <th>
+            <button md-button (click)="getBalance(user.userId)">GET BALANCE</button>
+          </th>
         </tr>
       </table>
     </md-card>
 
   </md-tab>
-  <md-tab label="Transactions">All trasnactions</md-tab>
+  <md-tab label="Transactions">
+    <md-card *ngIf="transactions">
+      <table style="width:100%">
+        <tr>
+          <th>Transaction Id</th>
+          <th>Old Balance</th>
+          <th>New Balance</th>
+        </tr>
+        <tr *ngFor="let user of users;">
+          <th>{{user.userId}}</th>
+          <th>{{user.userName}}</th>
+          <th>{{user.password}}</th>
+
+        </tr>
+      </table>
+    </md-card>
+
+  </md-tab>
 </md-tab-group>

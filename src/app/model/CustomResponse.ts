@@ -1,6 +1,6 @@
 export class CustomResponse {
 
-  constructor(public user?: User, public users?: User[], public balance?: Balance[], public status?: string, public error?: Error) {
+  constructor(public user?: User, public users?: User[], public balance?: Balance, public status?: string, public error?: Error) {
 
   }
 }
@@ -13,6 +13,13 @@ export interface User {
   userId?: string;
 }
 
+export interface Transaction {
+  transactionId?: string;
+  oldBalance?: Number;
+  newBalance?: string;
+  walletBalance?: string;
+  userId?: string;
+}
 export interface Balance {
   balance?: Number;
 }
