@@ -1,3 +1,20 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
 <div style="text-align:center">
   <h1>
     Welcome Admin !
@@ -10,4 +27,24 @@
 
 </div>
 
-<router-outlet></router-outlet>
+
+<md-tab-group>
+  <md-tab label="Users List">
+    <md-card *ngIf="users">
+      <table style="width:100%">
+        <tr>
+          <th>Id</th>
+          <th>User name</th>
+          <th>Password</th>
+        </tr>
+        <tr *ngFor="let user of users;">
+          <th>{{user.userId}}</th>
+          <th>{{user.userName}}</th>
+          <th>{{user.password}}</th>
+        </tr>
+      </table>
+    </md-card>
+
+  </md-tab>
+  <md-tab label="Transactions">All trasnactions</md-tab>
+</md-tab-group>
