@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
     console.log('app comp constr');
     this.loginService = loginService;
     this.router = router;
-    helperService.goLogin();
+    if (!loginService.isAuthenticated()) {
+      helperService.goLogin();
+    }
   }
 
   ngOnInit() {
