@@ -1,13 +1,31 @@
 <div style="text-align:center">
   <h1>
     Welcome User !
+    <br/>
+    <span *ngIf="walletBalance">
+      Your wallet Balance is {{walletBalance}}
+    </span>
   </h1>
   <img width="100" src="https://static.fabhotels.com/icons/logo.svg">
-
   <br>
-
   <br>
-
 </div>
 
-<router-outlet></router-outlet>
+
+<md-tab-group>
+  <md-tab label="Recharge">
+    <md-card>
+      recharge
+    </md-card>
+  </md-tab>
+  <md-tab label="Add Money">
+    <md-card>
+      add money
+    </md-card>
+  </md-tab>
+  <md-tab label="Bill Payment">
+    <md-card>
+      Bill Payment
+    </md-card>
+  </md-tab>
+</md-tab-group>
