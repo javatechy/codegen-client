@@ -54,5 +54,9 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+
+  logOut() {
+    this.helperService.clear();
+  }
 }
 

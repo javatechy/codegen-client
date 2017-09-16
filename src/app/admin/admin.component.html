@@ -1,20 +1,3 @@
-<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-</style>
 <div style="text-align:center">
   <h1>
     Welcome Admin !
@@ -43,10 +26,11 @@
           <th>{{user.userName}}</th>
           <th>{{user.password}}</th>
           <th>
-            <button md-button (click)="getBalance(user.userId)">GET BALANCE</button>
+            <button md-button color="primary" (click)="getBalance(user.userId)">GET BALANCE</button>
           </th>
         </tr>
       </table>
+      <button md-button color="warn" (click)="logOut()">Logout</button>
     </md-card>
 
   </md-tab>

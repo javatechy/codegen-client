@@ -6,7 +6,7 @@ import {HelperService} from '../services/helper.service';
 import {FormService} from '../services/form.service';
 import * as AppUtils from '../utils/app.utils';
 import {Common} from '../utils/Common';
-import {Balance, Transaction, User} from '../model/CustomResponse';
+import {Balance, User} from '../model/CustomResponse';
 import 'rxjs/add/observable/of';
 
 @Component({
@@ -19,7 +19,6 @@ export class UserComponent implements OnInit {
   user: User;
   balance: Balance;
   walletBalance: Number;
-
 
   constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
               public form: FormBuilder, private helperService: HelperService, private formService: FormService) {
@@ -42,6 +41,10 @@ export class UserComponent implements OnInit {
         this.helperService.openSnackBar('Error While fetching balance : ' + customResponse.error.message);
       }
     });
+  }
+
+  logOut() {
+    this.helperService.clear();
   }
 }
 
