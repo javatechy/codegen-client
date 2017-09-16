@@ -20,6 +20,7 @@
           <th>User name</th>
           <th>Password</th>
           <th>Wallet Balance</th>
+          <th>Transactions</th>
         </tr>
         <tr *ngFor="let user of users;">
           <th>{{user.userId}}</th>
@@ -28,27 +29,37 @@
           <th>
             <button md-button color="primary" (click)="getBalance(user.userId)">GET BALANCE</button>
           </th>
+          <th>
+            <button md-button color="primary" (click)="showTransactions(user.userId)">Show  Transactions</button>
+          </th>
         </tr>
       </table>
     </md-card>
 
-  </md-tab>
-  <md-tab label="Transactions">
-    <md-card *ngIf="transactions">
-      <table style="width:100%">
-        <tr>
-          <th>Transaction Id</th>
-          <th>Old Balance</th>
-          <th>New Balance</th>
-        </tr>
-        <tr *ngFor="let user of users;">
-          <th>{{user.userId}}</th>
-          <th>{{user.userName}}</th>
-          <th>{{user.password}}</th>
-
-        </tr>
-      </table>
+    <md-card>
+    <md-expansion-panel >
+      <md-expansion-panel-header color="primary">
+        <md-panel-title>
+          Transaction data
+        </md-panel-title>
+      </md-expansion-panel-header>
+        <table style="width:100%" *ngIf="transactions">
+          <tr>
+            <th>Transaction Id</th>
+            <th>Old Balance</th>
+            <th>New Balance</th>
+            <th>Transaction Amount</th>
+            <th>Transaction Type</th>
+          </tr>
+          <tr *ngFor="let transaction of transactions;">
+            <th>{{transaction.transactionId}}</th>
+            <th>{{transaction.oldBalance}}</th>
+            <th>{{transaction.newBalance}}</th>
+            <th>{{transaction.transactionAmount}}</th>
+            <th>{{transaction.transactionType}}</th>
+          </tr>
+        </table>
+    </md-expansion-panel>
     </md-card>
-
   </md-tab>
 </md-tab-group>

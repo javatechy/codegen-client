@@ -41,6 +41,7 @@ export class HelperService {
     localStorage.clear();
     sessionStorage.clear();
     window.location.reload();
+    //this.goLogin();
   }
 
   openSnackBar(msg: string) {

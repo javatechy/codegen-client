@@ -9,7 +9,6 @@ import {Common} from '../utils/Common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  // styleUrls: ['./app.component.css'],
 })
 export class LoginComponent implements OnInit {
   title = 'FabWallet';
@@ -25,20 +24,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.loginService.isAuthenticated()) {
-      if (this.loginService.getUserStatus() === 'Z000') {
-      } else if (this.loginService.getUserStatus() === 'Z004') {
-      } else {
-        this.router.navigate(['/user']);
-      }
-    } else {
-      Common.removeItem(AppUtils.SS_USER_STATUS);
+    if (!this.loginService.isAuthenticated()) {
+      localStorage.clear();
+      sessionStorage.clear();
     }
-
   }
 
   submitLoginForm(post) {
-    // alert(JSON.stringify(post));
     this.loginService.authenticate(post.userName, post.password).subscribe(customResponse => {
       if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
         this.helperService.openSnackBar('Login Successfull');

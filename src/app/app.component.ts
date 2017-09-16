@@ -7,22 +7,15 @@ import {HelperService} from './services/helper.service';
 @Component({
   selector: 'app-root',
   template: `
-    <nav>
-    </nav>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  ticks = 0;
-  title = 'Zoto';
   loginService: LoginService;
-  mdsaResponse: any;
   router: Router;
-  previousUrl: string;
 
   constructor(router: Router, loginService: LoginService, helperService: HelperService) {
-
     console.log('app comp constr');
     this.loginService = loginService;
     this.router = router;

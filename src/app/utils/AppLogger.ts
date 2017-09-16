@@ -1,8 +1,7 @@
-import {isUndefined} from 'util';
 import {Common} from './Common';
 import {environment} from '../../environments/environment';
 /**
- * Created by deepak.kumar2 on 4/21/2017.
+ * Created by deepak
  */
 export class AppLogger {
 
