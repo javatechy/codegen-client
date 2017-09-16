@@ -16,54 +16,12 @@ export class LoginService {
               private route: ActivatedRoute, private helperService: HelperService) {
   }
 
-  vcid(msisdn: string): Observable<CustomResponse> {
-    AppLogger.log('[VCID]  mssidn' + msisdn);
-    const cs = Common.create('VCID');
-    cs.user.msisdn = msisdn;
-    return this.helperService.post(AppUtils.BACKEND_API_VCID, cs);
-  }
-
-  auth(msisdn: string, otp: string): Observable<CustomResponse> {
-    AppLogger.log('[LoginService AUTH]  authenticate' + msisdn);
-    const cs = Common.create('AUTH');
-    cs.user.msisdn = msisdn;
-    cs.user.password = otp;
-    cs.oAuth.accessToken = Common.getStorage(AppUtils.LS_ACCESS_TOKEN);
-    // let url='http://52.209.79.99:7070/auth/authenticate';
-    return this.http.post(AppUtils.BACKEND_API_AUTH, JSON.stringify(cs), Common.createHeader())
-      .map((res: Response) => {
-        const d: CustomResponse = res.json();
-        // d.user.isPinSet = false;
-        if (d.status === AppUtils.BE_STATUS_SUCCESS) {
-          AppLogger.log('[LoginService] JSON ::: ' + JSON.stringify(res.json()));
-          AppLogger.log('[LoginService] HEADER_X_SECRET ::: ' + JSON.stringify(res.headers));
-          AppLogger.log('[LoginService] HEADER_WWW_AUTHENTICATE ::: ' + res.headers.get(AppUtils.HEADER_WWW_AUTHENTICATE));
-          Common.setStorage(AppUtils.CSRF_CLAIM_HEADER, res.headers.get(AppUtils.CSRF_CLAIM_HEADER));
-          Common.setStorage(AppUtils.STORAGE_ACCOUNT_TOKEN, res.text());
-          Common.setStorage(AppUtils.STORAGE_HMAC_APP_JWT, res.headers.get(AppUtils.STORAGE_HMAC_APP_JWT));
-          AppLogger.log('[LoginService] CSRF_CLAIM_HEADER ' + res.headers.get(AppUtils.CSRF_CLAIM_HEADER));
-          AppLogger.log('[LoginService] STORAGE_ACCOUNT_TOKEN ' + res.text());
-          AppLogger.log('[LoginService] HMAC AUTH JWT ' + res.headers.get(AppUtils.STORAGE_HMAC_APP_JWT));
-          d.user.msisdn = Common.getStorage(AppUtils.SS_LOGIN_MSISDN);
-          Common.setStorage(AppUtils.SS_LOGGED_IN_USER, d.user);
-          AppLogger.log('Logged in user ' + Common.getStorage(AppUtils.SS_LOGGED_IN_USER));
-          Common.setStorage(AppUtils.LS_ACCESS_TOKEN, d.oAuth.accessToken);
-          Common.setStorage(AppUtils.LS_REFRESH_TOKEN, res.headers.get('refresh-token'));
-        }
-
-        return d;
-      });
-  }
-
-
-  onbd(firstName: string, lastName: string, emailId: string, msisdn: string): Observable<CustomResponse> {
-    AppLogger.log('[VCID]  mssidn' + msisdn);
-    const cs = Common.create(AppUtils.OPCODE_ONBD);
-    cs.user.msisdn = msisdn;
-    cs.user.emailId = emailId;
-    cs.user.firstName = firstName;
-    cs.user.lastName = lastName;
-    return this.helperService.post(AppUtils.BACKEND_API_ONBD, cs);
+  authenticate(userName: string, password: string): Observable<CustomResponse> {
+    AppLogger.log('UserName  and pass' + userName + 'Password' + password);
+    const cs = Common.create();
+    cs.userName = userName;
+    cs.password = password;
+    return this.helperService.post(AppUtils.BACKEND_API_AUTH, cs);
   }
 
   isAuthenticated(): boolean {
@@ -96,7 +54,7 @@ export class LoginService {
   }
 
   logoutButton(): void {
-    const cs = Common.create(AppUtils.OPCODE_RKTN);
+    const cs = Common.create();
     this.helperService.post(AppUtils.BACKEND_API_RKTN, cs).subscribe();
     AppLogger.log('Logging out via button');
     localStorage.clear();

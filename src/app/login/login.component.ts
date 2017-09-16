@@ -10,16 +10,16 @@ import {Common} from '../utils/Common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
- // styleUrls: ['./app.component.css'],
+  // styleUrls: ['./app.component.css'],
 })
 export class LoginComponent implements OnInit {
   title = 'FabWallet';
   loginForm: FormGroup;
 
   constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
-              public form: FormBuilder, private helperService: HelperService, private formService: FormService){
+              public form: FormBuilder, private helperService: HelperService, private formService: FormService) {
 
-    this.loginForm =   form.group({
+    this.loginForm = form.group({
       'userName': [null, Validators.required],
       'password': [null, Validators.compose([Validators.required])],
     });
@@ -37,10 +37,16 @@ export class LoginComponent implements OnInit {
     }
 
   }
+
   submitLoginForm(post) {
-    alert( post.userName);
-    alert( post.pass);
-    this.router.navigate(['/user']);
+    // alert(JSON.stringify(post));
+    this.loginService.authenticate(post.userName, post.password).subscribe(customResponse => {
+      alert(JSON.stringify(customResponse));
+      if (customResponse.status === '200') {
+        
+      }
+    });
+    // this.router.navigate(['/user']);
   }
 
 }

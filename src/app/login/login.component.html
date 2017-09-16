@@ -9,26 +9,32 @@
   <br>
 
   <form class="example-form" [formGroup]="loginForm"
-      (ngSubmit)="submitLoginForm(loginForm)">
+        (ngSubmit)="submitLoginForm(loginForm.value)">
 
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="User Name"  formControlName="userName" mdTooltip="Create your user using scripts given in fab-backend project!" maxlength={{len}} size="20" >
+      <input mdInput placeholder="User Name" formControlName="userName"
+             mdTooltip="Create your user using scripts given in fab-backend project!" maxlength={{len}} size="20">
     </md-form-field>
-  <div  style="color: chocolate;" *ngIf="!loginForm.controls['userName'].valid && loginForm.controls['userName'].touched">Please enter username</div>
+    <div style="color: chocolate;"
+         *ngIf="!loginForm.controls['userName'].valid && loginForm.controls['userName'].touched">Please enter username
+    </div>
 
-<br>
+    <br>
 
-  <md-form-field class="example-full-width">
-      <input mdInput placeholder="Password"  formControlName="password" mdTooltip="Only Mandatory field validation is added" type="password" maxlength={{len}} size="20" >
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Password" formControlName="password"
+             mdTooltip="Only Mandatory field validation is added" type="password" maxlength={{len}} size="20">
     </md-form-field>
-  <div  style="color: chocolate;" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Please enter password</div>
-<br>
-  <button type="submit" style="background-color: #fa7100; color: white; outline: none;border:none;width:20%;height:40px;
+    <div style="color: chocolate;"
+         *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Please enter password
+    </div>
+    <br>
+    <button type="submit" style="background-color: #fa7100; color: white; outline: none;border:none;width:20%;height:40px;
                     border:1px solid #fa7100; border-radius: 3px;" [disabled]="!loginForm.valid">
-    Proceed
-  </button>
+      Proceed
+    </button>
 
-</form>
+  </form>
 </div>
 
 <router-outlet></router-outlet>

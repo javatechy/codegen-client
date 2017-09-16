@@ -14,17 +14,13 @@ export class Common {
     return arg;
   }
 
-  static create(operationCode: string): CustomRequest {
+  static create(): CustomRequest {
     const customRequest = new CustomRequest();
-
-    customRequest.operationCode = operationCode;
     return customRequest;
   }
 
   static createEditRequest(operationCode: string): CustomRequest {
     const customRequest = new CustomRequest();
-    customRequest.operationCode = operationCode;
-    customRequest.offer = null;
     return customRequest;
   }
 
