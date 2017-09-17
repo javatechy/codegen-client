@@ -11,6 +11,8 @@ export interface User {
   userName?: string;
   password?: string;
   userId?: string;
+  createdOn ?: FDate;
+  updatedOn ?: FDate;
 }
 
 export interface Transaction {
@@ -21,6 +23,16 @@ export interface Transaction {
   userId?: string;
   transactionType ?: string;
   transactionAmount?: number;
+  createdOn ?: FDate;
+}
+
+export interface FDate {
+  hour?: Number;
+  minute?: Number;
+  second?: Number;
+  dayOfMonth?: Number;
+  year?: Number;
+  monthValue?: Number;
 }
 
 export interface Balance {

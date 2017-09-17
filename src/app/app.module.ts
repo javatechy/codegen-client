@@ -43,7 +43,7 @@ import {RouterModule} from '@angular/router';
 import {AdminComponent} from './admin/admin.component';
 import {UserComponent} from './user/user.component';
 import {HelperService} from './services/helper.service';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {LoginService} from './services/login.service';
 import {LoginComponent} from './login/login.component';
 
