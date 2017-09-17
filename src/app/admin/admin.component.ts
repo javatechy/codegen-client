@@ -11,6 +11,10 @@ import 'rxjs/add/observable/of';
   templateUrl: './admin.component.html',
   providers: [HelperService],
 })
+
+/**
+ * Handles all admin page activities
+ */
 export class AdminComponent implements OnInit {
   users: User[];
   transactions: Transaction[];

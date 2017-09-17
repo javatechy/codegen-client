@@ -12,6 +12,9 @@ import 'rxjs/add/observable/of';
   providers: [HelperService],
 })
 
+/**
+ * Handles all user related tasks.
+ */
 export class UserComponent implements OnInit {
   user: User;
   balance: Balance;

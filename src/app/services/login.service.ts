@@ -10,6 +10,9 @@ import {CustomResponse} from '../model/CustomResponse';
 import {HelperService} from './helper.service';
 import {isNullOrUndefined} from "util";
 
+/**
+ * Service for all login  related tasks.
+ */
 @Injectable()
 export class LoginService {
 
@@ -17,6 +20,12 @@ export class LoginService {
               private route: ActivatedRoute, private helperService: HelperService) {
   }
 
+  /**
+   * Authentication based on username and password
+   * @param {string} userName Username of the user
+   * @param {string} password password of the user
+   * @returns {Observable<CustomResponse>} CustomResponse got from  backend.
+   */
   authenticate(userName: string, password: string): Observable<CustomResponse> {
     AppLogger.log('UserName  and pass' + userName + 'Password' + password);
     const cs = Common.create();
@@ -25,6 +34,10 @@ export class LoginService {
     return this.helperService.post(AppUtils.BACKEND_API_AUTH, cs);
   }
 
+  /**
+   * Checks if a user is logged in or not.
+   * @returns {boolean} true if user is loggedin else false.
+   */
   isAuthenticated(): boolean {
     const userName = Common.getStorage(AppUtils.LS_USER_NAME);
     if (isNullOrUndefined(userName)) {
@@ -34,6 +47,10 @@ export class LoginService {
     }
   }
 
+  /**
+   * User Status.
+   * @returns {string} user status.
+   */
   getUserStatus(): string {
     const status = Common.getStorage(AppUtils.LS_USER_STATUS);
     return status;

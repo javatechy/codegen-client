@@ -11,7 +11,7 @@ import {HelperService} from './services/helper.service';
   `,
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   loginService: LoginService;
   router: Router;
 
@@ -22,12 +22,5 @@ export class AppComponent implements OnInit {
     if (!loginService.isAuthenticated()) {
       helperService.goLogin();
     }
-  }
-
-  ngOnInit() {
-  }
-
-  activeRoute(routename: string): boolean {
-    return this.router.url.indexOf(routename) > -1;
   }
 }

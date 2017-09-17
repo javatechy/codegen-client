@@ -10,6 +10,9 @@ import {Common} from '../utils/Common';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
+/**
+ * Handles all login related tasks.
+ */
 export class LoginComponent implements OnInit {
   title = 'FabWallet';
   loginForm: FormGroup;

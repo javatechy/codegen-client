@@ -1,3 +1,6 @@
+/**
+ * Common Response mapper class for all backend responses.
+ */
 export class CustomResponse {
 
   constructor(public user?: User, public users?: User[], public balance?: Balance, public status?: string,
