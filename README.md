@@ -6,6 +6,20 @@ Backend for this project is:
 
 https://github.com/javatechy/fab-backend
 
+Features:
+-----------------------------
+**For User**:
+* Recharge
+* Bill Payment
+* Check Balance
+
+**For Admin**:
+* Check balance of any user
+* Cannot check other admin
+* Datails of all users
+* Transactions by a user
+
+
 Running the applicaion
 -----------------------------
 Follow these steps to run this project:
