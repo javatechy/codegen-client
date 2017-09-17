@@ -7,7 +7,7 @@
   <br>
 
   <br>
-  <button md-button color="warn" (click)="logOut()">Logout</button>
+  <button md-raised-button color="warn" (click)="logOut()">Logout</button>
 </div>
 
 
@@ -29,10 +29,10 @@
           <th>{{user.password}}</th>
           <th>{{user.createdOn.dayOfMonth + '-' + user.createdOn.monthValue + '-' + user.createdOn.year + ' '}}</th>
           <th>
-            <button md-button color="primary" (click)="getBalance(user.userId)">GET BALANCE</button>
+            <button md-raised-button color="primary" (click)="getBalance(user.userId)">GET BALANCE</button>
           </th>
           <th>
-            <button md-button color="primary" (click)="showTransactions(user.userId)">Show Transactions</button>
+            <button md-raised-button color="primary" (click)="showTransactions(user.userId)">Show Transactions</button>
           </th>
         </tr>
       </table>

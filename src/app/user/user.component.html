@@ -9,7 +9,7 @@
   <img width="200" src="https://static.fabhotels.com/icons/logo.svg">
   <br>
   <br>
-  <button md-button color="warn" (click)="logOut()">Logout</button>
+  <button md-raised-button color="warn" (click)="logOut()">Logout</button>
 </div>
 
 
@@ -46,7 +46,7 @@
       </form>
     </md-card>
   </md-tab>
-  <md-tab label="Bill Payment">
+  <md-tab label="Buy Movie Tickets">
     <md-card>
       <form class="example-form" [formGroup]="movieForm"
             (ngSubmit)="submitMovieForm(movieForm.value)">

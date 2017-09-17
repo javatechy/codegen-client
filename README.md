@@ -19,6 +19,9 @@ Features:
 * Datails of all users
 * Transactions by a user
 
+Validations:
+-----------------------------
+* Only mandatory field validations are add for all input fields.
 
 Running the applicaion
 -----------------------------

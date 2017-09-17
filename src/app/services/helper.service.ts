@@ -65,7 +65,7 @@ export class HelperService {
    */
   openSnackBar(msg: string) {
     this.snackBar.open(msg, '', {
-      duration: 3000,
+      duration: 6000,
     });
   }
 

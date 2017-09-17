@@ -29,11 +29,7 @@
          *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Please enter password
     </div>
     <br>
-    <button type="submit" style="background-color: #fa7100; color: white; outline: none;border:none;width:20%;height:40px;
-                    border:1px solid #fa7100; border-radius: 3px;" [disabled]="!loginForm.valid">
-      Proceed
-    </button>
-
+    <button md-raised-button color="warn" [disabled]="!loginForm.valid">Login</button>
   </form>
 </div>
 
