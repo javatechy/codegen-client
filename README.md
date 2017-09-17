@@ -25,5 +25,11 @@ There are 3 components:
 
 Session Management
 -----------------------------
-Sessions are managed in localstorage.
+Session variables are managed in localstorage.
+
+Constants
+-----------------------------
+ * All Constants are defined in `src/app/utils/app.utils.ts`
+ * Backend URL is mentioned in `environment.ts` in `src/environments` folder
+
 
