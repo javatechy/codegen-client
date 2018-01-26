@@ -19,8 +19,11 @@ export class AppComponent {
     console.log('app comp constr');
     this.loginService = loginService;
     this.router = router;
-    if (!loginService.isAuthenticated()) {
+    helperService.goCodingPage();
+
+/*    if (!loginService.isAuthenticated()) {
       helperService.goLogin();
     }
+  */
   }
 }

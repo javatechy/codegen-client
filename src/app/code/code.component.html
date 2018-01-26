@@ -1,0 +1,36 @@
+<div style="text-align:center">
+  <h1>Code Generator !!</h1><br>
+
+  <mat-checkbox class="example-margin" [(ngModel)]="this.request.properties.isActuatorEnabled">Enable Actuator</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="this.request.properties.isConstantFile">Enable Constant File</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="this.request.properties.isGlobalExceptionEnabled">Enable Global Exception Handling</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="this.request.properties.isLombokEnabled">Enable Lombok</mat-checkbox>
+
+  <form [formGroup]="codeForm"
+        (ngSubmit)="submitCodeForm(codeForm.value)">
+
+
+    <mat-form-field>
+      <input matInput placeholder="User Name" formControlName="userName"
+             matTooltip="To add new user please refer readme.md of fab-backend project" size="20">
+    </mat-form-field>
+
+    <div *ngIf="!codeForm.controls['userName'].valid && codeForm.controls['userName'].touched">Please enter username
+    </div>
+
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password"
+             matTooltip="Only Mandatory field validation is added" type="password" size="20">
+    </mat-form-field>
+
+    <div
+      *ngIf="!codeForm.controls['password'].valid && codeForm.controls['password'].touched">Please enter password
+    </div>
+
+    <br>
+    <button mat-raised-button color="warn" [disabled]="!codeForm.valid">Login</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,22 +1,17 @@
-# Fab Wallet UI
+# CodeGen Client
 
-This project is client of the fab wallet system. It is recommeded to run the backend first.
+This project is client of the CODEGEN system. It is recommeded to run the backend first.
 
 Backend for this project is:
 
-https://github.com/javatechy/fab-backend
+https://github.com/javatechy/codegen
 
 Features:
 -----------------------------
 **For User**:
-* Recharge
-* Bill Payment
-* Check Balance
+* Generate Codegen client
 
 **For Admin**:
-* Check balance of any user
-* Cannot check other admin
-* Datails of all users
 * Transactions by a user
 
 Validations:
@@ -35,9 +30,7 @@ Follow these steps to run this project:
 Project Structure
 -----------------------------
 There are 3 components:
- * `LoginComponent` - for user/admin Login
- * `AdminComponent` - for admin Page
- * `UserComponent`  - for User Page
+ * `CodeComponent` - for for code generato
 
 
 Session Management

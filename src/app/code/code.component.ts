@@ -5,22 +5,27 @@ import {LoginService} from '../services/login.service';
 import {HelperService} from '../services/helper.service';
 import * as AppUtils from '../utils/app.utils';
 import {Common} from '../utils/Common';
+import {CustomRequest, Properties} from "../model/CustomRequest";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl: './code.component.html',
 })
 /**
  * Handles all login related tasks.
  */
-export class LoginComponent implements OnInit {
+export class CodeComponent implements OnInit {
   title = 'FabWallet';
-  loginForm: FormGroup;
+  codeForm: FormGroup;
+   request = new CustomRequest();
+
 
   constructor(private router: Router, private loginService: LoginService, private route: ActivatedRoute,
               public form: FormBuilder, private helperService: HelperService) {
 
-    this.loginForm = form.group({
+    this.request.properties = new Properties();
+
+    this.codeForm = form.group({
       'userName': [null, Validators.required],
       'password': [null, Validators.compose([Validators.required])],
     });
@@ -33,20 +38,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  submitLoginForm(post) {
+  submitCodeForm(post) {
+    alert('CUSTOME REQ => ' + JSON.stringify(this.request));
+
     this.loginService.authenticate(post.userName, post.password).subscribe(customResponse => {
       if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
         this.helperService.openSnackBar('Login Successfull');
-        Common.setStorage(AppUtils.LS_LOGGED_IN_STATUS, customResponse.status);
-        Common.setStorage(AppUtils.LS_USER_ROLE, customResponse.user.role);
-        Common.setStorage(AppUtils.LS_USER_NAME, customResponse.user.userName);
-        Common.setStorage(AppUtils.LS_USER_ID, customResponse.user.userId);
-        if (customResponse.user.role === AppUtils.ROLE_ADMIN) {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/user']);
-        }
-      } else {
+       } else {
         this.helperService.openSnackBar('Login Failed with Error message : ' + customResponse.error.message);
       }
     });
