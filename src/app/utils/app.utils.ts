@@ -8,6 +8,7 @@ export const VALIDATION_PATTERN_AMOUNT: any = /^\d{1,}$/;
 export const BACKEND_BASE_URL = environment.apiUrl;
 
 export const BACKEND_API_AUTH: string = BACKEND_BASE_URL + '/fab/authenticate';
+export const BACKEND_API_PROJECT: string = BACKEND_BASE_URL + '/project/create';
 export const BACKEND_API_USERS: string = BACKEND_BASE_URL + '/fab/users';
 export const BACKEND_API_BALANCE: string = BACKEND_BASE_URL + '/fab/balance/';
 export const BACKEND_API_TRANSACTIONS: string = BACKEND_BASE_URL + '/fab/transactions/';

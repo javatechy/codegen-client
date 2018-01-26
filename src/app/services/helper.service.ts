@@ -31,7 +31,7 @@ export class HelperService {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Allow-Cross-Origin', '*');
     const bodySend = JSON.parse(JSON.stringify(customRequest));
-    return this.http.post(url, bodySend).map(res => res);
+    return this.http.post<CustomResponse>(url, bodySend);
   }
 
   /**
