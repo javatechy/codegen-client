@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {Http, Headers, Jsonp} from '@angular/http';
 import {AppLogger} from '../utils/AppLogger';
 import {CustomRequest} from '../model/CustomRequest';
-import {CustomResponse, Error} from '../model/CustomResponse';
+import {CustomResponse} from '../model/CustomResponse';
 import {Location} from '@angular/common';
 import 'rxjs/add/operator/map';
 import {MatSnackBar} from '@angular/material';

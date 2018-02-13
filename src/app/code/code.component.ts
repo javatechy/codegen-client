@@ -15,7 +15,7 @@ import {CustomRequest, Database, Logging, Properties, Controller} from '../model
  * Handles all project Creation Tasks
  */
 export class CodeComponent implements OnInit {
-  title = 'FabWallet';
+  title = 'Code Generator';
   codeForm: FormGroup;
   request = new CustomRequest();
 
@@ -40,13 +40,14 @@ export class CodeComponent implements OnInit {
   }
 
   submitRequest() {
-    this.helperService.openSnackBar(JSON.stringify(this.request));
     this.helperService.post(AppUtils.BACKEND_API_PROJECT, this.request).subscribe(customResponse => {
       if (customResponse.status === AppUtils.BE_STATUS_SUCCESS) {
         this.helperService.openSnackBar('Login Successfull');
       } else {
-        this.helperService.openSnackBar('Login Failed with Error message : ' + customResponse.error.message);
+        this.helperService.openSnackBar(customResponse.code + ' : ' + customResponse.error);
       }
+      this.helperService.openSnackBar(JSON.stringify(this.request));
+
     });
 
   }
